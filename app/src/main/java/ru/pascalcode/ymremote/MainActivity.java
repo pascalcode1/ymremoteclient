@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Button next;
 
+    private Button dislike;
+
+    private Button like;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         playPause = findViewById(R.id.playPause);
         previous = findViewById(R.id.previous);
         next = findViewById(R.id.next);
+        dislike = findViewById(R.id.dislike);
+        like = findViewById(R.id.like);
         playPause.setOnClickListener(view -> {
             String url = "http://192.168.0.5:1620/yandexmusic/playpause";
             new CommandSender().execute(url);
@@ -50,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
         });
         next.setOnClickListener(view -> {
             String url = "http://192.168.0.5:1620/yandexmusic/next";
+            new CommandSender().execute(url);
+        });
+        dislike.setOnClickListener(view -> {
+            String url = "http://192.168.0.5:1620/yandexmusic/dislike";
+            new CommandSender().execute(url);
+        });
+        like.setOnClickListener(view -> {
+            String url = "http://192.168.0.5:1620/yandexmusic/like";
             new CommandSender().execute(url);
         });
 
