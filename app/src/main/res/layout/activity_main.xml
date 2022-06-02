@@ -4,102 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/dislike"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
-        android:background="@drawable/oval_button"
-        android:text="&#x1F494;"
+        android:text="dislike"
+        android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playPause"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <Button
         android:id="@+id/like"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
-        android:background="@drawable/oval_button"
-        android:text="&#10084;"
+        android:text="like"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/playPause"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
-
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="271dp" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <Button
         android:id="@+id/playPause"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:background="@drawable/oval_button"
         android:backgroundTintMode="src_over"
-        android:insetLeft="30dp"
-        app:icon="@android:drawable/ic_media_play"
+        android:text="Play/Pause"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.820" />
+        app:layout_constraintVertical_bias="0.900" />
 
     <Button
         android:id="@+id/previous"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_weight="1"
-        android:background="@drawable/oval_button"
-        android:insetLeft="10dp"
-        app:icon="@android:drawable/ic_media_previous"
+        android:text="Prev"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playPause"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.800" />
+        app:layout_constraintVertical_bias="0.88" />
 
     <Button
         android:id="@+id/next"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/oval_button"
-        android:insetLeft="10dp"
-        app:icon="@android:drawable/ic_media_next"
+        android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toEndOf="@+id/playPause"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
-
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="333dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playPause" />
+        app:layout_constraintVertical_bias="0.88" />
 
     <ImageButton
-        android:id="@+id/settings"
+        android:id="@+id/settingsButton"
         android:layout_width="50dp"
         android:layout_height="55dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_manage" />
+
+    <Button
+        android:id="@+id/volumeUp"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:text="+"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/volumeDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/like"
+        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+
+    <Button
+        android:id="@+id/volumeDown"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="72dp"
+        android:text="-"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/like"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@+id/like" />
+
+    <Button
+        android:id="@+id/radio"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text="Radio"
+        app:layout_constraintBottom_toTopOf="@+id/favorite"
+        app:layout_constraintEnd_toStartOf="@+id/volumeUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/screenSaver" />
+
+    <Button
+        android:id="@+id/screenSaver"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:text="Diskoteka!!!"
+        app:layout_constraintEnd_toStartOf="@+id/volumeUp"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+
+    <Button
+        android:id="@+id/favorite"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="28dp"
+        android:text="Favorite"
+        app:layout_constraintBottom_toTopOf="@+id/dislike"
+        app:layout_constraintEnd_toStartOf="@+id/volumeUp"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
