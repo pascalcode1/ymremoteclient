@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/dislike"
         android:layout_width="70dp"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:text="dislike"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,19 +17,19 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.685" />
 
     <Button
         android:id="@+id/like"
         android:layout_width="70dp"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:text="like"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/playPause"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.685" />
 
     <Button
         android:id="@+id/playPause"
@@ -117,7 +117,7 @@
         android:layout_width="250dp"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
-        android:text="Diskoteka!!!"
+        android:text="ScreenSaver"
         app:layout_constraintEnd_toStartOf="@+id/volumeUp"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"

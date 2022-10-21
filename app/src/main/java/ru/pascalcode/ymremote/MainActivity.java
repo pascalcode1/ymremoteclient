@@ -1,5 +1,10 @@
 package ru.pascalcode.ymremote;
 
+import static ru.pascalcode.ymremote.Constant.ENV_REQUEST_MAPPING;
+import static ru.pascalcode.ymremote.Constant.PORT;
+import static ru.pascalcode.ymremote.Constant.URL_FORMAT;
+import static ru.pascalcode.ymremote.Constant.YM_REQUEST_MAPPING;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -14,10 +19,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageButton settingsButton;
 
     private Button playPause;
 
@@ -29,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button like;
 
-    private ImageButton settingsButton;
-
-    private Button screenSaver;
-
     private Button radio;
 
     private Button favorite;
@@ -41,13 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button volumeDown;
 
-    private final static String URL_FORMAT = "http://%s:%s/%s/%s";
-
-    private final static String YM_REQUEST_MAPPING = "yandexmusic";
-
-    private final static String ENV_REQUEST_MAPPING = "environment";
-
-    private final static String PORT = "1620";
+    private Button screenSaver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,51 +54,36 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        settingsButton = findViewById(R.id.settingsButton);
+
         playPause = findViewById(R.id.playPause);
         previous = findViewById(R.id.previous);
         next = findViewById(R.id.next);
         dislike = findViewById(R.id.dislike);
         like = findViewById(R.id.like);
-        settingsButton = findViewById(R.id.settingsButton);
-        screenSaver = findViewById(R.id.screenSaver);
         radio = findViewById(R.id.radio);
         favorite = findViewById(R.id.favorite);
+
         volumeUp = findViewById(R.id.volumeUp);
         volumeDown = findViewById(R.id.volumeDown);
-        playPause.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.PLAYPAUSE);
-        });
-        previous.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.PREVIOUS);
-        });
-        next.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.NEXT);
-        });
-        dislike.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.DISLIKE);
-        });
-        like.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.LIKE);
-        });
+        screenSaver = findViewById(R.id.screenSaver);
+
         settingsButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         });
-        screenSaver.setOnClickListener(view -> {
-            new CommandSender().execute(ENV_REQUEST_MAPPING, Command.SCREEN_SAVER);
-        });
-        radio.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.RADIO);
-        });
-        favorite.setOnClickListener(view -> {
-            new CommandSender().execute(YM_REQUEST_MAPPING, Command.FAVORITE);
-        });
-        volumeUp.setOnClickListener(view -> {
-            new CommandSender().execute(ENV_REQUEST_MAPPING, Command.VOLUME_UP);
-        });
-        volumeDown.setOnClickListener(view -> {
-            new CommandSender().execute(ENV_REQUEST_MAPPING, Command.VOLUME_DOWN);
-        });
+
+        playPause.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.PLAYPAUSE));
+        previous.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.PREVIOUS));
+        next.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.NEXT));
+        dislike.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.DISLIKE));
+        like.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.LIKE));
+        radio.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.RADIO));
+        favorite.setOnClickListener(view -> new CommandSender().execute(YM_REQUEST_MAPPING, YMCommand.FAVORITE));
+
+        volumeUp.setOnClickListener(view -> new CommandSender().execute(ENV_REQUEST_MAPPING, EnvCommand.VOLUME_UP));
+        volumeDown.setOnClickListener(view -> new CommandSender().execute(ENV_REQUEST_MAPPING, EnvCommand.VOLUME_DOWN));
+        screenSaver.setOnClickListener(view -> new CommandSender().execute(ENV_REQUEST_MAPPING, EnvCommand.SCREEN_SAVER));
     }
 
     private String getIpFromSharedPreferences() {
@@ -110,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         return sharedPreferences.getString(UserSettings.IP_ADDRESS, "");
     }
 
-    private class CommandSender extends AsyncTask<String, String, String> {
+    public class CommandSender extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -139,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
                 return buffer.toString();
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

@@ -1,6 +1,9 @@
 package ru.pascalcode.ymremote;
 
-public class Command {
+/**
+ * Команды для Yandex Music
+ */
+public class YMCommand {
 
     public static final String PLAYPAUSE = "playpause";
 
@@ -27,15 +30,5 @@ public class Command {
     public static final String RADIO = "radio/3e3e";
 
     public static final String FAVORITE = "radio/3yyyuuue00tte0eyyyye";
-
-
-    /**
-     * Системные комманды
-     */
-    public static final String VOLUME_UP = "volumeup";
-
-    public static final String VOLUME_DOWN = "volumedown";
-
-    public static final String SCREEN_SAVER = "screensaver";
 
 }
