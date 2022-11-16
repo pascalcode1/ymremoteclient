@@ -1,7 +1,7 @@
 package ru.pascalcode.ymremote;
 
 /**
- * Системные комманды
+ * Системные команды
  */
 public class EnvCommand {
 
